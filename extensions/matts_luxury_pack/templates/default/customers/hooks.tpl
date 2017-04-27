@@ -18,8 +18,6 @@
 *}
 {strip}
 
-{*if $hook_biller_add_table}{$hook_biller_add_table}{/if*}
-
 
 {capture name="hook_auth_login_hidden"}
 <input type="hidden" name="from" value="{$from}" />

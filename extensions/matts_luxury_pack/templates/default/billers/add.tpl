@@ -192,7 +192,7 @@
         <td>{html_options name=enabled options=$enabled selected=1}</td>
       </tr>
       {* {showCustomFields categorieId="1" itemId=""} *}
-{if isset($smarty.capture.hook_biller_add_table) && $smarty.capture.hook_biller_add_table}{$smarty.capture.hook_biller_add_table}{/if}
+{if $smarty.capture.hook_biller_add_table}{$smarty.capture.hook_biller_add_table}{/if}
     </table>
     <div class="si_toolbar si_toolbar_form">
       <button type="submit" class="positive" name="submit" value="{$LANG.insert_biller}">
