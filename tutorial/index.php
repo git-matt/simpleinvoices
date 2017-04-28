@@ -45,11 +45,16 @@ foreach($fill as $file)
 			if (!empty($string))
 				if ($level > $above)
 					$string .= "\n". str_repeat("\t", $above). '<ul>'. "\n";
-				else 
+				else
 					$string .= "</li>\n";
-			if ($level < $above)
-				$string .= "</li>\n". str_repeat("\t", $level). "</ul>";
 			else
+				$string .= str_repeat("\t", $above). '<ul>'. "\n";
+			if ($level < $above)
+			{
+				for($i=($above-$level); $i>1; $i--)
+					$string .= str_repeat("\t", $above). "</ul>\n";
+				$string .= str_repeat("\t", $level). "</ul>\n". str_repeat("\t", $level);
+			} else
 				$string .= str_repeat("\t", $level);
 			$string .= '<li><a href="#'. $name. '" class="cc-active level'. $level. '">'. $head. '</a>';
 			$block = str_replace('{$path}', TUTREL, $block);
