@@ -306,14 +306,7 @@ $early_exit[] = "invoice_template";
 $early_exit[] = "payments_print";
 $early_exit[] = "documentation_view";
 
-switch ($module) {
-    case "export":
-        $smarty_output = "fetch";
-        break;
-    default:
-        $smarty_output = "display";
-        break;
-}
+$smarty_output = $module == 'export' ? 'fetch' : 'display';
 if ($early_exit || $smarty_output) {} // Show variable as used.
 
 // get the url - used for templates / pdf
@@ -325,5 +318,4 @@ if ($siUrl) {} // Show variable as used.
  * appended to the config array, instead of replacing it
  * (NOTE: NOT TESTED!)
  * *************************************************************/
-include_once ("include/BackupDb.php");
-
+include_once ("include/class/BackupDb.php");

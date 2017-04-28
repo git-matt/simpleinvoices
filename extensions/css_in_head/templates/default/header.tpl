@@ -1,9 +1,8 @@
-{strip}{include file="templates/default/headline.xml"}{/strip}	{*Error: Saw “<?”. Probable cause: Attempt to use an XML processing instruction in HTML. (XML processing instructions are not supported in HTML.)*}
+{strip}{include file="templates/default/headline.xml"}	{*Error: Saw “<?”. Probable cause: Attempt to use an XML processing instruction in HTML. (XML processing instructions are not supported in HTML.)*}{/strip}
 <!DOCTYPE html>	{*Error: The document content type is not HTML : undefined*}
 <!-- from css_in_head -->
 <html>
-<head>
-{strip}
+<head>{strip}
 	{assign var='tmp_lang_module' value="title_module_`$module`"}
 	{assign var='tmp_lang_module' value=$LANG.$tmp_lang_module|default:$LANG.$module|default:$module}
 	{assign var='tmp_lang_view' value="title_view_`$view`"}
@@ -16,7 +15,6 @@
 	<meta http-equiv="Content-Style-Type" content="text/css" />	*BAD VALUE*}
 	<meta name="robots" content="noindex, nofollow" />
 	<link rel="shortcut icon" href="images/common/favicon.ico" />
-
 {literal}
 	<link rel="stylesheet" type="text/css" href="include/jquery/wysiwyg/wysiwyg.css" />
 	<link rel="stylesheet" type="text/css" href="include/jquery/jquery.plugins.css" title="default" media="screen" />
@@ -40,23 +38,20 @@
 	<script type="text/javascript" src="include/jquery/jquery.plugins.js"></script>
 	<script type="text/javascript" src="include/jquery/wysiwyg/wysiwyg.modified.packed.js"></script>
 	<script type="text/javascript" src="include/jquery/jquery.livequery.pack.js"></script>
-{/literal}
+{/literal}{strip}
 	{$extension_jquery_files }
 	{include file='include/jquery/jquery.functions.js.tpl'}
 	{include file='include/jquery/jquery.conf.js.tpl'}
 {literal}
-
 	<!--<script type="text/javascript" src="include/jquery/jquery.conf.js.tpl"></script>-->
-
-{/literal}
-	{if $config->debug->level == "All"}
+{/literal}{/strip}
+{if $config->debug->level == "All"}
 	<link rel="stylesheet" type="text/css" href="library/blackbirdjs/blackbird.css" />	
 	<script type="text/javascript" src="library/blackbirdjs/blackbird.js"></script>
-	{/if}
+{/if}
 {literal}
 	<script type="text/javascript" src="include/jquery/jquery.validationEngine.js"></script>
 {/literal}
-
 {$smarty.capture.hook_head_end}
 </head>
 <body class="body_si body_module_{$module} body_view_{$view}">

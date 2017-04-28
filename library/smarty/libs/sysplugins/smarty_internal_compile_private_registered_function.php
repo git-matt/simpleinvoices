@@ -44,7 +44,7 @@ class Smarty_Internal_Compile_Private_Registered_Function extends Smarty_Interna
         } else {
             $tag_info = $compiler->default_handler_plugins[ Smarty::PLUGIN_FUNCTION ][ $tag ];
         }
-        // not cachable?
+        // not cacheable?
         $compiler->tag_nocache = $compiler->tag_nocache || !$tag_info[ 1 ];
         // convert attributes into parameter array string
         $_paramsArray = array();
@@ -75,8 +75,8 @@ class Smarty_Internal_Compile_Private_Registered_Function extends Smarty_Interna
                                                   'value' => $output));
         }
         //Does tag create output
-        $compiler->has_output = isset($_attr[ 'assign' ]) ? false : true;
-        $output = "<?php " . ($compiler->has_output ? "echo " : '') . "{$output};?>\n";
+        $compiler->has_output = true;
+        $output = "<?php echo {$output};?>\n";
         return $output;
     }
 }

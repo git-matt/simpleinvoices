@@ -1,5 +1,7 @@
 <?php
 
+ob_start();
+
 defined('TUTABS') || define('TUTABS', realpath(dirname(__FILE__)));
 //defined('TUTREL') || define('TUTREL', str_replace(dirname($_SERVER['PHP_SELF']), ".", dirname(strstr(TUTABS, dirname($_SERVER['PHP_SELF'])))). '/');
 defined('TUTREL') || define('TUTREL', dirname($_SERVER['PHP_SELF']));

@@ -18,7 +18,7 @@
 *}
 {strip}
 
-{capture name="hook_biller_add_table"}
+{/strip}{capture name="hook_biller_add_table"}
 		<tr>
 			<th>{$LANG.inv_template}</th>
 			<td>{html_options name=invoice_template output=$tmpls values=$tmpls selected=$smarty.post.invoice_template}</td>
@@ -27,6 +27,18 @@
 			<th>{$LANG.delnote_template}</th>
 			<td>{html_options name=delnote_template output=$tmpls values=$tmpls selected=$smarty.post.delnote_template}</td>
 		</tr>
-{/capture}
+{/capture}{strip}
+
+
+{/strip}{capture name="hook_billers_grid_table_top"}
+		<span style="float: right;">
+			{$smarty.capture.table_top}
+		</span>
+{/capture}{strip}
+
+
+{/strip}{capture name="hook_billers_grid_table_end"}
+	{$smarty.capture.table_end}
+{/capture}{strip}
 
 {/strip}

@@ -1,4 +1,4 @@
-{* preload the headers (for faster browsing) *}
+{strip}{* preload the headers (for faster browsing) *}
 {if isset($header_tpl) && $header_tpl}
 {include file=$header_tpl}
 {else}
@@ -43,15 +43,13 @@
 			<a href="http://www.simpleinvoices.org">{$LANG.powered_by}&nbsp;{$LANG.simple_invoices}</a>
 		</div>
 {/if}
-	</div>
-{literal}
+	</div>{literal}
 	<script>
 		$(document).ready(function(){
 			$('.si_box').hide();
 			$('.si_box').slideDown(500);
 		});
 		document.frmLogin.user.focus();
-	</script>
-{/literal}
+	</script>{/literal}
 </body>
 </html>
