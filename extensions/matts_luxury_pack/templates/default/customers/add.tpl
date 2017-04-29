@@ -1,20 +1,11 @@
 {*
 /*
- * Script: ./extensions/matts_luxury_pack/templates/default/customers/add.tpl
- * 	Customers add template
- *
- * Authors:
- *	 git0matt@gmail.com, Justin Kelly, Nicolas Ruflin
- *
- * Last edited:
- * 	 2016-08-30
- *
- * License:
- *	 GPL v2 or above
- *
- * Website:
- * 	http://www.simpleinvoices.org
- */
+* Script: extensions/matts_luxury_pack/templates/default/customers/add.tpl
+* 	 Add a Customer template
+*
+* Last edited by:
+* 	git0matt@gmail.com
+*/
 *}
 
 {* if customer is updated or saved.*} 
@@ -32,6 +23,7 @@
 		<hr />
 *}
 {/if}	
+	{if $smarty.capture.hook_customers_form_top}	{$smarty.capture.hook_customers_form_top}	{/if}
 <form name="frmpost" action="index.php?module=customers&amp;view=add" method="post" id="frmpost" onsubmit="return checkForm(this);">
 	<div class="si_form">
 		<div id="tabs_customer">
@@ -45,6 +37,7 @@
 		<div id="section-1" class="fragment">
 
 			<table>
+	{if $smarty.capture.hook_customers_add_table1_top}	{$smarty.capture.hook_customers_add_table1_top}	{/if}
 				<tr>
 					<th>{$LANG.customer_name}
 						<a 
@@ -120,11 +113,13 @@
 					<th>{$LANG.email}</th>
 					<td><input type="text" name="email" value="{$smarty.post.email|htmlsafe}" size="25" /></td>
 				</tr>
+	{if $smarty.capture.hook_customers_add_table1_end}	{$smarty.capture.hook_customers_add_table1_end}	{/if}
 			</table>
 		</div>
 
 		<div id="section-2" class="fragment">
 			<table>
+	{if $smarty.capture.hook_customers_add_table2_top}	{$smarty.capture.hook_customers_add_table2_top}	{/if}
 				<tr>
 					<th>{$LANG.credit_card_holder_name}
 						<a
@@ -220,11 +215,13 @@
 						 />-->
 					</td>
 				</tr>
+	{if $smarty.capture.hook_customers_add_table2_end}	{$smarty.capture.hook_customers_add_table2_end}	{/if}
 			</table>
 		</div>
 
 		<div id="section-3" class="fragment">
 			<table>
+	{if $smarty.capture.hook_customers_add_table3_top}	{$smarty.capture.hook_customers_add_table3_top}	{/if}
 {if $customFieldLabel.customer_cf1}
 				<tr>
 					<th>{$customFieldLabel.customer_cf1|htmlsafe}
@@ -285,11 +282,13 @@
 					<td><input type="text" name="custom_field4" value="{$smarty.post.custom_field4|htmlsafe}" size="25" /></td>
 				</tr>
 {/if}
+	{if $smarty.capture.hook_customers_add_table3_end}	{$smarty.capture.hook_customers_add_table3_end}	{/if}
 			</table>
 		</div>
 
 		<div id="section-4" class="fragment">
 			<table>
+	{if $smarty.capture.hook_customers_add_table4_top}	{$smarty.capture.hook_customers_add_table4_top}	{/if}
 {if $defaults.price_list}
 				<tr>
 					<th>{$LANG.price_list}</th>
@@ -318,25 +317,31 @@
 				{showCustomFields categorieId="2"}
 			*}
 
+	{if $smarty.capture.hook_customers_add_table4_end}	{$smarty.capture.hook_customers_add_table4_end}	{/if}
 			</table>
 
 		</div>
 		<div class="si_toolbar si_toolbar_form">
+	{if $smarty.capture.hook_customers_add_submit}
+		{$smarty.capture.hook_customers_add_submit}
+	{else}
 			<button type="submit" class="positive" name="id" value="{$LANG.save}">
 				<img class="button_img" src="./images/common/tick.png" alt="tick" /> 
 				{$LANG.save}
 			</button>
-
+	{/if}
+	{if $smarty.capture.hook_customers_add_cancel}
+		{$smarty.capture.hook_customers_add_cancel}
+	{else}
 			<a id="cancelAddCustomer" href="./index.php?module=customers&amp;view=manage" class="negative">
 				<img src="./images/common/cross.png" alt="cross" />
 				{$LANG.cancel}
 			</a>
+	{/if}
 		</div>
-
 	</div>
+	{if $smarty.capture.hook_customers_add_hidden}	{$smarty.capture.hook_customers_add_hidden}	{/if}
 	<input type="hidden" name="op" value="insert_customer" />
 </form>
-<script type="text/javascript">
-	document.forms['frmpost'].elements['name'].focus();
-</script>
+	{if $smarty.capture.hook_customers_form_end}	{$smarty.capture.hook_customers_form_end}	{/if}
 {/if}

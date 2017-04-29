@@ -1,13 +1,10 @@
 {*
 /*
-* Script: /simple/extensions/matts_luxury_pack/templates/default/customers/details.tpl
-* 	 Customer details template
+* Script: extensions/matts_luxury_pack/templates/default/customers/details.tpl
+* 	 Details (view/edit) of a Customer template
 *
-* License:
-*	 GPL v3 or above
-*
-* Website:
-*	http://www.simpleinvoices.org
+* Last edited by:
+* 	git0matt@gmail.com
 */
 *}
 
@@ -16,6 +13,7 @@
 
 	<div class="si_cust_info">
 		<table>
+	{if $smarty.capture.hook_customers_view_table_top}	{$smarty.capture.hook_customers_view_table_top}	{/if}
 			<tr>
 				<th>{$LANG.customer_name}</th>
 				<td>{$customer.name}</td>
@@ -83,6 +81,7 @@
 				<th>{$customFieldLabel.customer_cf4}</th>
 				<td>{$customer.custom_field4|htmlsafe}</td>
 			</tr>
+	{if $smarty.capture.hook_customers_view_table_end}	{$smarty.capture.hook_customers_view_table_end}	{/if}
 		</table>
 	</div>
 
@@ -97,6 +96,7 @@
 		<div id="section-1" class="fragment">
 			<div class="si_cust_account">
 				<table>
+	{if $smarty.capture.hook_customers_view_table1_top}	{$smarty.capture.hook_customers_view_table1_top}	{/if}
 					<tr>
 						<th>{$LANG.total_invoices}</th>
 						<td class="si_right">{$stuff.total|number_format:2}</td>
@@ -109,6 +109,7 @@
 						<th>{$LANG.total_owing}</th>
 						<td class="si_right"><u>{$stuff.owing|number_format:2}</u></td>
 					</tr>
+	{if $smarty.capture.hook_customers_view_table1_end}	{$smarty.capture.hook_customers_view_table1_end}	{/if}
 				</table>
 			</div>
 		</div>
@@ -117,6 +118,7 @@
 
 			<div class="si_cust_card">
 				<table>
+	{if $smarty.capture.hook_customers_view_table2_top}	{$smarty.capture.hook_customers_view_table2_top}	{/if}
 					<tr>
 						<th>{$LANG.credit_card_holder_name}</th>
 						<td>{$customer.credit_card_holder_name|htmlsafe}</td>
@@ -137,6 +139,7 @@
 						<th>{$LANG.credit_card_expiry_year}</th>
 						<td>{$customer.credit_card_expiry_year|htmlsafe}</td>
 					</tr>
+	{if $smarty.capture.hook_customers_view_table2_end}	{$smarty.capture.hook_customers_view_table2_end}	{/if}
 				</table>
 			</div>
 		</div>
@@ -144,6 +147,7 @@
 		<div id="section-3" class="fragment">
 			<div class="si_cust_invoices">
 				<table>
+	{if $smarty.capture.hook_customers_view_table3_top}	{$smarty.capture.hook_customers_view_table3_top}	{/if}
 					<thead>
 						<tr class="tr_head">
 							<th class="first">
@@ -175,12 +179,14 @@
 {/if}
 {/foreach}
 					</tbody>
+	{if $smarty.capture.hook_customers_view_table3_end}	{$smarty.capture.hook_customers_view_table3_end}	{/if}
 				</table>
 			</div>
 		</div>
 		<div id="section-4" class="fragment">
 			<div class="si_cust_invoices">
 				<table>
+	{if $smarty.capture.hook_customers_view_table4_top}	{$smarty.capture.hook_customers_view_table4_top}	{/if}
 					<thead>
 						<tr class="tr_head">
 						<th class="first">{$LANG.id}</th>
@@ -209,6 +215,7 @@
 						</tr>
 {/foreach}
 					</tbody>
+	{if $smarty.capture.hook_customers_view_table4_end}	{$smarty.capture.hook_customers_view_table4_end}	{/if}
 				</table>
 			</div>
 		</div>
@@ -222,11 +229,19 @@
 
 	<div class="si_toolbar si_toolbar_form">
 {if $defaults.delete == '1' && $invoice.owing<1}
+	{if $smarty.capture.hook_customers_view_button_delete}
+		{$smarty.capture.hook_customers_view_button_delete}
+	{else}
 		<a title="{$LANG.delete} {$LANG.customer} '{$customer.name|htmlsafe}'" href="index.php?module=customers&amp;view=delete&amp;stage=1&amp;id={$customer.id|urlencode}">
 			<img src='images/common/delete.png' class='action' />&nbsp;{$LANG.delete}</a>
+	{/if}
 {/if}
+	{if $smarty.capture.hook_customers_view_button_edit}
+		{$smarty.capture.hook_customers_view_button_edit}
+	{else}
 		<a href="./index.php?module=customers&amp;view=details&amp;id={$customer.id|urlencode}&amp;action=edit" class="positive">
 			<img src="./images/common/tick.png" alt="tick" />{$LANG.edit}</a>
+	{/if}
 	</div>
 </div>
 {/if}
@@ -236,7 +251,7 @@
 
 
 {if $smarty.get.action == 'edit'}
-
+	{if $smarty.capture.hook_customers_details_form_top}	{$smarty.capture.hook_customers_details_form_top}	{/if}
 <form name="frmpost" action="index.php?module=customers&amp;view=save&amp;id={$customer.id|urlencode}" method="post" id="frmpost" onsubmit="return checkForm(this);">
 	<div class="si_form" id="si_form_cust_edit">
 
@@ -250,6 +265,7 @@
 		</div>
 		<div id="section-1" class="fragment">
 			<table align="center">
+	{if $smarty.capture.hook_customers_edit_table1_top}	{$smarty.capture.hook_customers_edit_table1_top}	{/if}
 				<tr>
 					<th>{$LANG.customer_name}
 						<a class="cluetip" href="#" rel="index.php?module=documentation&amp;view=view&amp;page=help_required_field" title="{$LANG.required_field}">
@@ -310,10 +326,12 @@
 					<th>{$LANG.email}</th>
 					<td><input type="text" name="email" value="{$customer.email|htmlsafe}" size="50" /></td>
 				</tr>
+	{if $smarty.capture.hook_customers_edit_table1_end}	{$smarty.capture.hook_customers_edit_table1_end}	{/if}
 			</table>
 		</div>
 		<div id="section-2" class="fragment">
 			<table>
+	{if $smarty.capture.hook_customers_edit_table2_top}	{$smarty.capture.hook_customers_edit_table2_top}	{/if}
 				<tr>
 					<th>{$LANG.credit_card_holder_name}
 						<a
@@ -424,10 +442,12 @@
 						 />-->
 					</td>
 				</tr>
+	{if $smarty.capture.hook_customers_edit_table2_end}	{$smarty.capture.hook_customers_edit_table2_end}	{/if}
 			</table>
 		</div>
 		<div id="section-3" class="fragment">
 			<table>
+	{if $smarty.capture.hook_customers_edit_table3_top}	{$smarty.capture.hook_customers_edit_table3_top}	{/if}
 {if $customFieldLabel.customer_cf1}
 				<tr>
 					<th>{$customFieldLabel.customer_cf1|htmlsafe}
@@ -492,10 +512,12 @@
 					</td>
 				</tr>
 {/if}
+	{if $smarty.capture.hook_customers_edit_table3_end}	{$smarty.capture.hook_customers_edit_table3_end}	{/if}
 			</table>
 		</div>
 		<div id="section-4" class="fragment">
 			<table>
+	{if $smarty.capture.hook_customers_edit_table4_top}	{$smarty.capture.hook_customers_edit_table4_top}	{/if}
 {if $defaults.price_list}
 				<tr>
 					<th>{$LANG.price_list}</th>
@@ -522,16 +544,28 @@
 						{html_options name=enabled options=$enabled selected=$customer.enabled}
 					</td>
 				</tr>
+	{if $smarty.capture.hook_customers_edit_table4_end}	{$smarty.capture.hook_customers_edit_table4_end}	{/if}
 			</table>
 		</div>
 			
 		<div class="si_toolbar si_toolbar_form">
-			<button type="submit" class="positive" name="save_customer" value="{$LANG.save_customer}"><img class="button_img" src="./images/common/tick.png" alt="tick" />{$LANG.save}</button>
-			<a id="cancelEditCustomer" href="./index.php?module=customers&amp;view=manage" class="negative"><img src="./images/common/cross.png" alt="cross" />{$LANG.cancel}</a>
+	{if $smarty.capture.hook_customers_edit_submit}
+		{$smarty.capture.hook_customers_edit_submit}
+	{else}
+			<button type="submit" class="positive" name="save_customer" value="{$LANG.save_customer}">
+				<img class="button_img" src="./images/common/tick.png" alt="tick" />{$LANG.save}</button>
+	{/if}
+	{if $smarty.capture.hook_customers_edit_table_top}
+		{$smarty.capture.hook_customers_edit_cancel}
+	{else}
+			<a id="cancelEditCustomer" href="./index.php?module=customers&amp;view=manage" class="negative">
+				<img src="./images/common/cross.png" alt="cross" />{$LANG.cancel}</a>
+	{/if}
 		</div>
 
 	</div>
-
+	{if $smarty.capture.hook_customers_details_hidden}	{$smarty.capture.hook_customers_details_hidden}	{/if}
 	<input type="hidden" name="op" value="edit_customer" />
 </form>
+	{if $smarty.capture.hook_customers_details_form_end}	{$smarty.capture.hook_customers_details_form_end}	{/if}
 {/if}

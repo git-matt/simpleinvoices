@@ -1,24 +1,18 @@
 {*
 /*
-* Script: ./extensions/matts_luxury_pack/templates/default/customers/delete.tpl
-* 	 delete customer template
+* Script: extensions/matts_luxury_pack/templates/default/customers/delete.tpl
+* 	Delete a Customer template
 *
-* Authors:
-*	 git0matt@gmail.com, Justin Kelly, Nicolas Ruflin
-*
-* Last edited:
-* 	 2016-09-14
-*
-* License:
-*	 GPL v2 or above
-*
-* Website:
-*	http://www.simpleinvoices.org
+* Last edited by:
+* 	git0matt@gmail.com
 */
 *}
 
 {if $smarty.get.stage == 1}
 
+	{if $smarty.capture.hook_customers_delete_stage1}
+		{$smarty.capture.hook_customers_delete_stage1}
+	{else}
 	<br />
 		<div class="si_error_line">{$LANG.confirm_delete}<br />{$LANG.customer} '{$customer.name|htmlsafe}'?</div><!--si_message_error-->
 	<br />
@@ -37,19 +31,24 @@
             </a>
 		</div>
 	</form>
+	{/if}
 	
 {/if}
 
 {if $smarty.get.stage == 2 }
 
+	{if $smarty.capture.hook_customers_delete_stage2}
+		{$smarty.capture.hook_customers_delete_stage2}
+	{else}
 	<div id="top"></b></div>
 	<br /><br />
 		<div class="si_message_ok">{$LANG.customer} '{$customer.name|htmlsafe}' {$LANG.deleted}<br />{$LANG.redirect_customers}</div>
 	<br /><br />
-{	if $smarty.post.cancel == null}
+{if $smarty.post.cancel == null}
 	<meta http-equiv="refresh" content="2;URL=index.php?module=customers&view=manage" />
-{	else}
+{else}
 	<meta http-equiv="refresh" content="0;URL=index.php?module=customers&view=manage" />
-{	/if}
+{/if}
+	{/if}
 
 {/if}
