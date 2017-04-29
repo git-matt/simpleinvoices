@@ -113,8 +113,6 @@ if (isset($_POST['action']) && $_POST['action'] == 'login' &&
 $smarty->assign("errorMessage",$errorMessage);
 if (isset($_SERVER['HTTP_REFERER']))
 {
-	//$query = substr($_SERVER['HTTP_REFERER'], strpos($_SERVER['HTTP_REFERER'], '?'));
 	$query = '?'. parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY);
-	//$smarty->assign("from", urlencode($query));//Matt
 	$smarty->assign('hook_auth_login_hidden', '<input type="hidden" name="from" value="'. urlencode($query). '" />');
 }

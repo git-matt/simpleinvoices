@@ -144,7 +144,7 @@ if (inIframe())
 	document.write('<meta http-equiv="refresh" content="0;URL=index.php?module=customers&view=manage" />');
 {/if}
 {rdelim}
-	{/if}
+	{*/if*}
 else
 {ldelim}
 {if $smarty.post.cancel == null}
