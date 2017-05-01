@@ -1,18 +1,12 @@
-{*debug*}{strip}{* preload the headers (for faster browsing) *}
+{debug}{strip}{* preload the headers (for faster browsing) *}
 {if isset($header_tpl) && $header_tpl}
 {include file=$header_tpl}
 {else}
 {if file_exists($path|cat:'../header.tpl')}{include file=$path|cat:'../header.tpl'}{else}{if file_exists('templates/default/header.tpl')}{include file='templates/default/header.tpl'}{/if}{/if}
 {/if}
 {if $smarty.capture.hook_auth_login_top}{$smarty.capture.hook_auth_login_top}{/if}
-	<div class="si_wrap">
-					{capture append="appendage"}
-						<div>login.tpl appendage</div>
-					{/capture}
-					{foreach $appendage as $aaa}{$aaa}{/foreach}* where is the first capture (in ../hooks.tpl)?
-	{cappend name="gggg"}<div>hello</div>{/cappend}
-	{foreach $gggg as $g}{$g}{/foreach}
 {/strip}
+	<div class="si_wrap">
 		<form action="" method="post" id="frmLogin" name="frmLogin">
 {if $hook_auth_login_hidden}{$hook_auth_login_hidden}
 {else}

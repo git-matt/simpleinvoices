@@ -20,7 +20,7 @@
 
 {*common captures*}
 
-{/strip}{capture name="table_top"}
+{capture name="table_top"}
 			<span class="si_filters_title">{$LANG.rows_per_page}:</span>
 			<script>
 			function change_rp(rp){literal}
@@ -40,10 +40,10 @@
 				<option value="{$v}"{if $smarty.get.rp==$v || ($smarty.get.rp=='' && $defaults.default_nrows==$v)} selected="selected"{/if}>{$v}</option>
 	{/foreach}
 			</select>
-{/capture}{strip}
+{/capture}
 
 
-{/strip}{capture name="table_end"}
+{capture name="table_end"}
 <script type="text/javascript"><!--{literal}
 	var img_tick = '<img src="images/common/tick.png" alt="tick" />';
 	var img_cross = '<img src="images/common/cross.png" alt="cross" />';
@@ -79,13 +79,13 @@
 		this.innerHTML = img_tick;
 	});
 //--></script>{/literal}
-{/capture}{strip}
+{/capture}
 
 
 {*include other hooks*}
 
 {assign var=inc value=$mlprel|substr:2|cat:'templates/default/'}
-{/strip}
+
 {if file_exists($inc|cat:'auth/hooks.tpl')}{include file=$inc|cat:'auth/hooks.tpl'}{/if}
 {if file_exists($inc|cat:'billers/hooks.tpl')}{include file=$inc|cat:'billers/hooks.tpl'}{/if}
 {if file_exists($inc|cat:'customers/hooks.tpl')}{include file=$inc|cat:'customers/hooks.tpl'}{/if}
@@ -93,6 +93,16 @@
 {if file_exists($inc|cat:'invoices/hooks.tpl')}{include file=$inc|cat:'invoices/hooks.tpl'}{/if}
 {if file_exists($inc|cat:'products/hooks.tpl')}{include file=$inc|cat:'products/hooks.tpl'}{/if}
 {if file_exists($inc|cat:'user/hooks.tpl')}{include file=$inc|cat:'user/hooks.tpl'}{/if}
-{strip}
+
+{*capture append trial*}
+
+{/strip}{capture name="appendage"}
+	<div>appendage initial</div>
+{/capture}{strip}
+
+{/strip}{capture append="appendage"}
+	<div>hooks.tpl appendage</div>
+{/capture}{strip}
+
 
 {/strip}

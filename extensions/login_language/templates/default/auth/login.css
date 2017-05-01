@@ -1,0 +1,4 @@
+#select_1 {								position:absolute;	bottom:1em;	left:1em;	padding:0;	text-overflow: '';
+										background-color: transparent;	-moz-appearance: none;	text-indent: 0.01px;	outline: none;	}
+#select_1 option {						padding:5px 0 5px 20px;	outline: none; background-position:2px center;
+										background-repeat:no-repeat;	}

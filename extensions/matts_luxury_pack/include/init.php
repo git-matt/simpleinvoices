@@ -29,7 +29,9 @@ if (!isset($matthere))
 	$smarty->assign('mlprel', $mlprel);
 
 	//echo '<script>alert("matts_luxury_pack-init:req ['.$_SERVER['REQUEST_TIME_FLOAT'].']['.$start_time.']")</script>';
-
+	$smarty->assign('disable_url_with_id', $_SERVER['PHP_SELF']. '?module='. $module. '&view=disable&id=');
+	$smarty->assign('enable_url_with_id', $_SERVER['PHP_SELF']. '?module='. $module. '&view=enable&id=');
+	
 	//include_once "$matthere/sql_queries.php";	//not needed here
 	//set_include_path(get_include_path() . PATH_SEPARATOR . "./$matthere/");	// files are not loaded on-demand
 	set_include_path(get_include_path() . PATH_SEPARATOR . "$matthere/class/");	// load classes on-demand
@@ -37,10 +39,14 @@ if (!isset($matthere))
 	error_log('loading //matts_luxury_pack//init.php at '. $mytime->took());//date("Y-m-d H:i:s", 
 
 	modifyDB::log();
-	$array0to9 = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);	// often used array
-	$pagerows = array(5, 10, 15, 20, 25, 30, 35, 50, 100, 500);	// rows-per-page array
+	$array0to9 = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+	$smarty->assign('array0to9', $array0to9);
+	$pagerows = array(5, 10, 15, 20, 25, 30, 35, 50, 100, 500);
+	$smarty->assign('pagerows', $pagerows);
 	$months = array('January','February','March','April','May','June','July','August','September','October','November','December');
+	$smarty->assign('months', $months);
 	$mons = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
+	$smarty->assign('mons', $mons);
 	$smarty->assign("version_name", $config->version->name);	// put version_name into page header template
 	include_once ($matthere. '/customer.functs.php');
 	//$logger->log('include_once ('. $matthere. '/customer.functs.php)', Zend_Log::INFO);
@@ -48,6 +54,8 @@ if (!isset($matthere))
 	include_once ($matthere. '/payments.functs.php');
 	//$logger->log('include_once ('. $matthere. '/payments.functs.php)', Zend_Log::INFO);
 	error_log('matts_luxury_pack-init:include_once ('. $matthere. '/payments.functs.php) in '. $mytime->took());
+	
+	
 
 	/*
 	function myNoticeStrictHandler($errstr, $errfile, $errline) {//$errno=null, 

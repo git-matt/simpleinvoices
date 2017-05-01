@@ -1,0 +1,21 @@
+.desc {									color:#6b6b6b;	}
+.desc a {								color:#0092dd;	}
+.dropdown {								margin-left: 1em;	/*position:absolute;	bottom:1em;	left:1em;*/	}
+.dropdown dd, .dropdown dt, .dropdown ul {	margin:0px; padding:0px;	}
+.dropdown dd {							position:relative;	}
+.dropdown a, .dropdown a:visited {		color:grey;/*#816c5b;*/ text-decoration:none; outline:none;	}
+.dropdown a:hover {						color:darkgrey;/*#5d4617;*/	}
+.dropdown dt a:hover {					color:grey;/*#5d4617;*/ border: 1px solid grey;/*#d0c9af;*/	}
+.dropdown dt a {							/*background:#e4dfcb url(arrow.png) no-repeat scroll right center;*/	padding:5px;
+										display:block;	padding-right:20px;	border:1px solid lightgrey;/*#d4ca9a;*/	max-width:275px;	}
+.dropdown dt a:after {					content:"\25BC";	float: right;	/*position: absolute;	left: 90%;*/	}
+.dropdown dt a span {						cursor:pointer; display:block;	}
+.dropdown dd ul {							/*background:#fff#e4dfcb none repeat scroll 0 0;*/	border:1px solid grey;/*#d4ca9a;*/
+										color:grey;/*#C5C0B0*/;	display:none;	left:0px;	padding:5px 0px;	position:absolute;
+										/*top:2px;*/	width:auto;	min-width:170px;	list-style:none;	}
+.dropdown span.value {					display:none;	}
+.dropdown dd ul li a {						padding:5px; display:block;	}
+.dropdown dd ul li a:hover {					background-color:darkgrey;/*#d0c9af;*/	color:#fff;	}
+
+.dropdown img.flag {						border:none; vertical-align:middle; margin-left:10px;	}
+.flagvisibility {						display:none;	}

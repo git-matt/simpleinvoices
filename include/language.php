@@ -7,24 +7,37 @@
  * Not in each translated file need to be each all translations, only in the default-lang-file (english)
  */
 global $LANG, $databaseBuilt, $zendDb;
-unset($LANG);
-$LANG = array();
 
-if ($databaseBuilt) {
-    $tables = $zendDb->listTables(); // TEST: print db tables
-    // if upgrading from old version then getDefaultLang wont work during install
-    if (in_array(TB_PREFIX . 'system_defaults', $tables)) {
-        $language = getDefaultLanguage();
-    } else {
-        $language = "en_US";
-    }
+$language = '';
+if (isset($_GET['lang']) && $_GET['lang'])
+{
+	$language = $_GET['lang'];
+
 } else {
-    $language = "en_US";
+
+	unset($LANG);
+	$LANG = array();
+
+	if ($databaseBuilt) {
+		$tables = $zendDb->listTables(); // TEST: print db tables
+		// if upgrading from old version then getDefaultLang wont work during install
+		if (in_array(TB_PREFIX . 'system_defaults', $tables)) {
+			$language = getDefaultLanguage();
+		} else {
+			$language = "en_US";
+		}
+	} else {
+		$language = "en_US";
+	}
 }
 
-function getLanguageArray($lang = '') {
+$LANG = getLanguageArray($language);
+
+function getLanguageArray($lang = '')
+{
     global $ext_names, $LANG;
 
+	error_log('getLanguageArray('. $lang. ')');
     if (!empty($lang)) {
         $language = $lang;
     } else {
@@ -74,8 +87,6 @@ function getLanguageList() {
 
     return $languages;
 }
-
-$LANG = getLanguageArray();
 
 //TODO: if (getenv("HTTP_ACCEPT_LANGUAGE") != available language) && (config lang != en) ) {
 // then use config lang
