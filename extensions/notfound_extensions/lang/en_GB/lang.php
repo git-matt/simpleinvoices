@@ -1,3 +1,4 @@
 <?php
-//extensions/notfound_extensions
-require './extensions/notfound_extensions/lang/en_CA/lang.php';
+//en_GB
+require str_replace(dirname($_SERVER['PHP_SELF']), ".", dirname(strstr(realpath(dirname(__FILE__)), dirname($_SERVER['PHP_SELF'])))). '/en_CA/lang.php';
+//require './extensions/notfound_extensions/lang/en_CA/lang.php';

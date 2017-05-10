@@ -1,0 +1,13 @@
+#navButtons {				/*clear: both;*/	/*width: 100%;*/	/*padding: 1em 0 0 1em;*/	}
+.qury {						padding: 1em;	}
+.si_filters_customers,
+.si_filters_billers,
+.si_filters_invoices,
+.si_filters_products,
+.si_filters_user,
+.si_filters_users {	margin-top: 1em;	width: auto;	float: none;	}
+.si_buttons_manage_invoices {	width: auto;	float: none;	}
+.si_filters_links a {	border-bottom: 1px solid #ccc;	border-right: 1px solid #ccc;	}
+.si_filters_links a.first {	border-left: 1px solid #ccc;	}
+.si_filters_links {	max-width: 90%;	}
+/*.si_filters_invoices a {	border: 1px solid #ccc;	border-radius: 7px; margin-bottom: 1em;	float: right;	}*/

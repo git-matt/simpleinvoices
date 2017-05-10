@@ -1,4 +1,4 @@
-{*debug*}{strip}{* preload the headers (for faster browsing) *}
+{debug}{strip}{* preload the headers (for faster browsing) *}
 {if isset($header_tpl) && $header_tpl}
 {include file=$header_tpl}
 {else}

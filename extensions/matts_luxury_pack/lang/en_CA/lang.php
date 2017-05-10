@@ -38,7 +38,7 @@ $MYC_LANG = array(
 	'help_nrows'					=> 'Number of rows initially displayed on the list of customers, invoices or products.',
 // customers
 	'select'						=> '-select-',
-	'jan'							=> 'Jan',
+/*	'jan'							=> 'Jan',
 	'feb'							=> 'Feb',
 	'mar'							=> 'Mar',
 	'apr'							=> 'Apr',
@@ -49,7 +49,7 @@ $MYC_LANG = array(
 	'sep'							=> 'Sep',
 	'oct'							=> 'Oct',
 	'nov'							=> 'Nov',
-	'dec'							=> 'Dec',
+	'dec'							=> 'Dec',*/
 	'credit_card_cvc'				=> 'CVV/CVC/CSC',
 	'help_credit_card_cvc'			=> '<img src="./extensions/matts_luxury_pack/images/common/CVC2SampleVisaNew.png" alt="CVC2SampleVisaNew" /><br /> The card security code is located on the back of MasterCard, Visa, Discover, Diners Club, and JCB credit or debit cards and is typically a separate group of 3 digits to the right of the signature strip. <br /><img src="./extensions/matts_luxury_pack/images/common/SampleAmexCVC.png" alt="SampleAmexCVC" /><br /> On American Express cards, the card security code is a printed, not embossed, group of four digits on the front towards the right.',
 	'help_credit_card_expiry_year'	=> '<img src="./extensions/matts_luxury_pack/images/common/SampleAmexExpireYear.png" alt="SampleAmexExpireYear" />',

@@ -26,7 +26,10 @@ isset($_GET['action']) && $action = $_GET['action'];
 if ($action == 'toggle') {
 	setStatusExtension($extension_id) or die(htmlsafe("Something went wrong with the status change!"));
 }
-$exts = getExtensions();
+global $exts;
+//$exts = getExtensions();
+if (!isset($exts) || !$exts)
+	//$exts = Exts::get_all();
 $smarty->assign("exts", $exts);
 foreach($exts as $ext)
 {
@@ -36,8 +39,9 @@ foreach($exts as $ext)
 		$messages[] = $LANG['dir_notfound']. ': '. $LANG['extension']. ' "'. $ext['name']. '", '.
 			' <a href="./index.php?module=extensions&amp;view=manage&amp;id='. $ext['id']. '&amp;action=toggle">'. $LANG['disable']. '</a>';
 }
-$smarty->assign('pageActive', 'setting');
+//$smarty->assign('pageActive', 'setting');
 $smarty->assign('active_tab', '#setting');
+$smarty->assign('pageActive', 'setting_extensions');
 $smarty->assign('subPageActive', 'setting_extensions');
 $smarty->assign('messages', $messages);
 

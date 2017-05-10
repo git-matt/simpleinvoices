@@ -1,4 +1,4 @@
-{debug}{strip}{* preload the headers (for faster browsing) *}
+{strip}{* preload the headers (for faster browsing) *}
 {if isset($header_tpl) && $header_tpl}
 {include file=$header_tpl}
 {else}
@@ -14,7 +14,10 @@
 {/if}
 			<input type="hidden" name="action" value="login" />
 			<div class="si_box">
+{if $smarty.capture.hook_auth_login_title}{$smarty.capture.hook_auth_login_title}
+{else}
 				<h1>{$LANG.company_name}</h1>
+{/if}
 				<div class="si_box_auth_pad">
 					<table>
 						<tr>

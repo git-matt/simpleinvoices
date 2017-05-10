@@ -6,14 +6,13 @@
 {/foreach}
 			</select>
 		</div>
-	<!--<script src="{$mlprel|cat:'include/jquery/chosen.jquery.js'}"></script>-->
 
 	<script>{literal}
 		$('#select_1').change(function(){
 			var form = document.getElementById("frmLogin")
 			var svalue = $(this).val();
 			$('input[name=lang]').val(svalue);
-			form.action='language.php';
+			form.action='{/literal}{$llrel}{literal}language.php';
 			form.submit();
 		});
 	</script>{/literal}

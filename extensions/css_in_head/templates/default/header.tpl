@@ -35,6 +35,7 @@
 	<script type="text/javascript" src="include/jquery/cluetip/jquery.hoverIntent.minified.js"></script>
 	<script type="text/javascript" src="include/jquery/cluetip/jquery.cluetip.js"></script>
 	<script type="text/javascript" src="include/jquery/jquery.flexigrid.1.0b3.pack.js"></script>
+<!--	<script type="text/javascript" src="include/jquery/uncompressed/flexigrid.my.js"></script>-->
 	<script type="text/javascript" src="include/jquery/jquery.plugins.js"></script>
 	<script type="text/javascript" src="include/jquery/wysiwyg/wysiwyg.modified.packed.js"></script>
 	<script type="text/javascript" src="include/jquery/jquery.livequery.pack.js"></script>

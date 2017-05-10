@@ -27,7 +27,6 @@ $cihrel = substr(str_replace(dirname($_SERVER['PHP_SELF']), "", dirname(strstr($
 }
 
 $styles = array();
-$estyles = array();
 //error_log('root is |'. SI_ABSROOT);//dirname(dirname(dirname(__FILE__))). '|');
 foreach($ext_names as $ext)	// each enabled extension
 {
@@ -40,6 +39,7 @@ foreach($ext_names as $ext)	// each enabled extension
 		$estyles = str_replace('{$csspath}', dirname($file). '/', $estyles);
 //error_log("YES: $estyles");
 	} else {
+		$estyles = array();
 		$file = "extensions/$ext/templates/default/css";
 		if (file_exists($file))
 		{

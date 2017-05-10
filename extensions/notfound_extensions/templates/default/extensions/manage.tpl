@@ -28,7 +28,8 @@
 {/if}
 {/if}
 
-{if $exts == null}
+{*if $exts == null*}
+{if $ext_names == null}
 
 	<p><em>No extensions registered</em></p>
 

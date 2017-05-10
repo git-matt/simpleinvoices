@@ -48,6 +48,7 @@ if (!isset($matthere))
 	$mons = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
 	$smarty->assign('mons', $mons);
 	$smarty->assign("version_name", $config->version->name);	// put version_name into page header template
+	$smarty->assign("version", explode('.', $config->version->name));	// put version_name into page header template
 	include_once ($matthere. '/customer.functs.php');
 	//$logger->log('include_once ('. $matthere. '/customer.functs.php)', Zend_Log::INFO);
 	error_log('matts_luxury_pack-init:include_once ('. $matthere. '/customer.functs.php) in '. $mytime->took());

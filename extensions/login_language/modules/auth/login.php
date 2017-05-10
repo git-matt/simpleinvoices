@@ -89,14 +89,7 @@ if (!empty($_POST['user']) && !empty($_POST['pass'])) {
         foreach ($result as $key => $value) {
             $authNamespace->$key = $value;
         }
-/*
-		$changelanguage = isset($_POST['lang']) ? $_POST['lang'] : '';
-		if ($changelanguage != $defaults.language)
-		{
-			global $LANG;
-			$LANG = getLanguageArray($id);
-		}
-*/
+
         if ($authNamespace->role_name == 'customer' && $authNamespace->user_id > 0) {
             header('Location: index.php?module=customers&view=details&action=view&id='.$authNamespace->user_id);
         } else {
