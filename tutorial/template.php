@@ -18,7 +18,18 @@
 <body>
 	<div class="wrapper">
 		<nav class="top_nav">
-<?php if (isset($insert['top_nav.html'])) echo $insert['top_nav.html']; ?>
+<?php
+	$file = TUT_SECTIONS. '/top_nav.php';
+	//echo 'file:'. $file. '|';
+	if (file_exists($file))
+		include $file;
+	else {
+		echo '	<div class="si_toolbar">
+					<a href="'. $_SERVER['HTTP_REFERER']. '">Return To Previous Screen</a>
+				</div>';
+	}
+	if (isset($insert['top_nav.html'])) echo $insert['top_nav.html'];
+?>
 		</nav>
 		<header>
 <?php if (isset($insert['header.html'])) echo $insert['header.html']; ?>

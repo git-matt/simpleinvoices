@@ -34,13 +34,13 @@ foreach($fill as $file)
 		$above = isset($level) ? $level : 2;
 		$level = (int)$block[0];
 		$first_step = explode('>', $block);
+		$head = substr($first_step[1], 0, -4);
 		if ($level==1)
 		{
 			if (!isset($insert['title']))
-				$insert['title'] = $first_step[1];
+				$insert['title'] = $head;//first_step[1];
 		} else
 		{
-			$head = substr($first_step[1], 0, -4);
 			$name = strtok($head, ' ');
 			if (!empty($string))
 				if ($level > $above)
